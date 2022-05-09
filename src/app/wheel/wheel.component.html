@@ -1,0 +1,45 @@
+<div class="content">
+    <div class="head">
+        <div class="left">
+            <div class="divider" style="background-color: green;"></div>
+            <p>ფსონი</p>
+            <div class="progress">
+                <div class="load" style="width: 100%; background-color: green;">
+
+                </div>
+            </div>
+            <div class="refresh">
+                <i class="fa fa-refresh" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div class="item" *ngFor="let item of items; let i = index">
+
+            <div class="divider" [ngStyle]="{'background' : (i < activeItemIndex) ? 'green' : 'rgb(157, 157, 157)'}"></div>
+            <p>{{item.amountStr}}</p>
+            <div class="progress">
+                <div class="load" [ngStyle]="{'width' : fillLength(i)}">
+                    <div class="fill" *ngIf="item.active">
+                        {{amount}} <span>ლ</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-wheel" [ngStyle]="{'opacity' : (amount >= item.amount) ? '1' : '0.4'}">
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="progress">
+                <div class="load">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="inp">
+    <input type="text" (keyup)="change($event)">
+</div>
